@@ -8,50 +8,37 @@ public class notas {
     double acu1, acu2, acu3, def;
     Scanner entrada = new Scanner(System.in); // Objeto Scanner para entrada de datos
 
-    
-    public void IngresaNotas() {
+    public void ingresarNotas() {
         System.out.println("Ingrese las notas del estudiante");
 
         System.out.print("Ingrese nota 1: ");
-        uf1 = entrada.nextDouble();
+        uf1 = leerNota();
 
         System.out.print("Ingrese nota 2: ");
-        uf2 = entrada.nextDouble();
+        uf2 = leerNota();
 
         System.out.print("Ingrese nota 3: ");
-        uf3 = entrada.nextDouble();
+        uf3 = leerNota();
     }
 
-   
-    public void comprobacion() {
-        if (uf1 > 10) {
-            System.out.println("Nota 1 mal introducida");
-        } else {
-            System.out.println("Nota 1 correcta");
+    public double leerNota() {
+        double nota = entrada.nextDouble();
+        if (nota < 0 || nota > 10) {
+            System.out.println("Nota ingresada incorrecta, asegúrese de que esté en el rango de 0 a 10.");
+            System.out.print("Ingrese nuevamente la nota: ");
+            nota = leerNota(); // Llamada recursiva si la nota es incorrecta
         }
-
-        if (uf2 > 10) {
-            System.out.println("Nota 2 mal introducida");
-        } else {
-            System.out.println("Nota 2 correcta");
-        }
-
-        if (uf3 > 10) {
-            System.out.println("Nota 3 mal introducida");
-        } else {
-            System.out.println("Nota 3 correcta");
-        }
+        return nota;
     }
 
-   
-    public void Calculonotas() {
+    public void calcularNotas() {
         acu1 = uf1 * 0.35;
         acu2 = uf2 * 0.35;
         acu3 = uf3 * 0.30;
         def = acu1 + acu2 + acu3;
     }
 
-    public void Mostrar() {
+    public void mostrarResultados() {
         System.out.println("Notas introducidas:");
         System.out.println("Nota 1 = " + uf1);
         System.out.println("Nota 2 = " + uf2);
@@ -62,29 +49,21 @@ public class notas {
         System.out.println("Nota definitiva = " + def);
     }
 
-  
-    public void aprobado() {
-        if (def < 5 && def >= 0) {
+    public void comprobarAprobacion() {
+        if (def >= 5 && def <= 10) {
+            System.out.println("Aprobado");
+        } else if (def >= 0 && def < 5) {
             System.out.println("Suspendió");
         } else {
-            if (def >= 5 && def <= 10) {
-                System.out.println("Aprobado");
-            } else {
-                System.out.println("Error en las notas");
-            }
+            System.out.println("Error en las notas");
         }
     }
 
-   
     public static void main(String[] args) {
-        notas fc = new notas();
-        fc.IngresaNotas();
-        fc.comprobacion();
-        fc.Calculonotas();
-        fc.Mostrar();
-        fc.aprobado();
+        notas notasEstudiante = new notas();
+        notasEstudiante.ingresarNotas();
+        notasEstudiante.calcularNotas();
+        notasEstudiante.mostrarResultados();
+        notasEstudiante.comprobarAprobacion();
     }
 }
-
-
-
