@@ -9,7 +9,7 @@ public class notas {
     Scanner entrada = new Scanner(System.in); // Objeto Scanner para entrada de datos
 
     public void ingresarNotas() {
-        System.out.println("Ingrese las notas del estudiante");
+        System.out.println("Ingrese las notas del estudiantee");
 
         System.out.print("Ingrese nota 1: ");
         uf1 = leerNota();
