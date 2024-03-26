@@ -9,7 +9,7 @@ public class notas {
     Scanner entrada = new Scanner(System.in); // Objeto Scanner para entrada de datos
 
     public void ingresarNotas() {
-        System.out.println("Ingrese las notas del estudiantee");
+        System.out.println("Ingrese las notas del estudiante");
 
         System.out.print("Ingrese nota 1: ");
         uf1 = leerNota();
@@ -58,6 +58,16 @@ public class notas {
             System.out.println("Error en las notas");
         }
     }
+    
+    public void resetearNotas() {
+        uf1 = 0;
+        uf2 = 0;
+        uf3 = 0;
+        acu1 = 0;
+        acu2 = 0;
+        acu3 = 0;
+        def = 0;
+    }
 
     public static void main(String[] args) {
         notas notasEstudiante = new notas();
@@ -65,5 +75,6 @@ public class notas {
         notasEstudiante.calcularNotas();
         notasEstudiante.mostrarResultados();
         notasEstudiante.comprobarAprobacion();
+        notasEstudiante.resetearNotas(); // Se llama al método para restablecer las notas
     }
 }
